@@ -1,0 +1,72 @@
+body {
+    background-image: url('../images/pexels-karolina-grabowska-4084678.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 120%;
+    width: 100%;
+}
+
+.card {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(86, 39, 10, 0.5);
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+}
+
+input{
+    border-radius: 15px;
+    background-color: #54392d;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    margin-bottom: 4px;
+}
+
+h5{
+    font-size: 30px;
+    letter-spacing: 0.2rem;
+}
+
+.btn {
+    background-color: #64493a;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    letter-spacing: 0.1rem;
+    border-radius: 15px;
+    padding: 10px 18px;
+    border-color: #c4ac91;
+    border-width: 1px;
+}
+
+.btn:hover {
+    background-color: #c4ac91;
+    color: white;
+}
+
+.valid-error {
+    color: #ff0000;
+    background: rgba(243, 227, 207, 0.5);
+    border-radius: 5px;
+    padding-bottom: 1px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+@media (max-width: 600px) {
+    .card {
+        padding: 10px;
+        margin-left: 10px;
+        margin-right: 10px;
+        width: 90%;
+    }
+}

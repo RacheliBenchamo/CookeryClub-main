@@ -1,0 +1,179 @@
+body {
+    background-image: url('../images/pexels-karolina-grabowska-4033159.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
+.card.recipe-card {
+    margin-bottom: 30px;
+    background-color: rgba(86, 39, 10, 0.6);
+    border-radius: 30px;
+    color: #fff;
+    font-size: 2rem;
+    box-shadow: 5px 10px 18px rgba(0, 0, 0, 0.2);
+}
+
+.card.comment-card {
+    margin: 20px 0;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 15px;
+    box-shadow: 5px 10px 18px rgba(0, 0, 0, 0.2);
+}
+
+.comment-card .card-body {
+    padding: 20px;
+}
+
+.comment-card .card-body form .row {
+    margin: 15px 0;
+}
+
+.list-comment {
+    list-style: none;
+}
+
+.category-link{
+    color: #ffffff !important;
+}
+
+.category-link:hover{
+    color: #fdd963 !important;
+}
+
+.category-link:active{
+    color: #fdd963 !important;
+}
+
+.list-comment li {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+
+.list-comment li:last-child {
+    border-bottom: none;
+}
+
+.card-img-top {
+    object-fit: fill;
+    height: 360px;
+    width: 450px;
+    border-radius: 30px;
+    overflow: auto;
+}
+
+.btn {
+    background-color: #64493a;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    letter-spacing: 0.1rem;
+    border-radius: 15px;
+    padding: 10px 18px;
+    border-color: #c4ac91;
+    border-width: 1px;
+}
+
+.btn:hover {
+    background-color: #c4ac91;
+    color: white;
+}
+
+footer {
+    overflow: auto;
+}
+
+.title1{
+    color: #64493a;
+    font-size: 30px;
+    letter-spacing: 0.2rem;
+}
+
+.title2{
+    font-size: 50px;
+    letter-spacing: 0.2rem;
+}
+
+.rate {
+    float: left;
+    height: 46px;
+    padding: 0 10px;
+}
+
+.rate input {
+    font-size: 3.5rem !important;
+}
+
+.rate label {
+    font-size: 3.5rem !important;
+}
+
+.rate:not(:checked) > input {
+    position:absolute;
+    visibility: hidden;
+}
+
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+    color:#ccc;
+}
+
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+
+.rate > input:checked ~ label {
+    color: #ffc700;
+}
+
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #deb217;
+}
+
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}
+
+.yellow-stars {
+    color: #ffc700;
+}
+
+@media screen and (max-width: 480px) {
+    .rate label {
+        font-size: 0.7em !important;
+    }
+
+    .rate input[type="radio"] {
+        width: 55% !important;
+        height: 55% !important;
+    }
+
+    .title2{
+        font-size: 30px;
+    }
+
+    .card-img-top {
+        height: 150px;
+        width: 200px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .card-img-top {
+        height: 150px;
+        width: 200px;
+    }
+}
+
+

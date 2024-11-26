@@ -1,0 +1,293 @@
+[
+  {
+    "recipeName": "Pasta Carbonara",
+    "category": ["Italian", "Main-Courses"],
+    "picture": "https://www.thespruceeats.com/thmb/ovIQQQxQajADuIE2lqhgqq7ppyE=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/pasta-carbonara-recipe-5210168-hero-01-80090e56abc04ca19d88ebf7fad1d157.jpg",
+    "author": "Racheli",
+    "difficulty": "Easy-Breezy",
+    "time": 30,
+    "ingredients": [
+      {
+        "name": "Spaghetti",
+        "quantity": 200,
+        "unit": "grams"
+      },
+      {
+        "name": "Bacon",
+        "quantity": 100,
+        "unit": "grams"
+      },
+      {
+        "name": "Eggs",
+        "quantity": 2,
+        "unit": "pieces"
+      },
+      {
+        "name": "Parmesan cheese",
+        "quantity": 50,
+        "unit": "grams"
+      },
+      {
+        "name": "Black pepper",
+        "quantity": 1,
+        "unit": "teaspoon"
+      },
+      {
+        "name": "Salt",
+        "quantity": 1,
+        "unit": "teaspoon"
+      }
+    ],
+    "instructions": "1. Cook spaghetti until al dente.<br>2. In a separate pan, fry the bacon until crispy. <br>3. In a bowl, beat the eggs and mix in grated Parmesan cheese, black pepper, and salt. <br>4. Drain the cooked spaghetti and add it to the pan with bacon. <br>5. Pour the egg mixture over the spaghetti and toss until coated. <br>6. Serve immediately."
+  },
+  {
+    "recipeName": "Chocolate Chip Cookies",
+    "category": ["Desserts", "Baking"],
+    "picture": "https://static01.nyt.com/images/2022/02/12/dining/JT-Chocolate-Chip-Cookies/JT-Chocolate-Chip-Cookies-master768.jpg",
+    "author": "Yarin",
+    "difficulty": "Intermediate",
+    "time": 40,
+    "ingredients": [
+      {
+        "name": "All-purpose flour",
+        "quantity": 250,
+        "unit": "grams"
+      },
+      {
+        "name": "Unsalted butter",
+        "quantity": 150,
+        "unit": "grams"
+      },
+      {
+        "name": "Brown sugar",
+        "quantity": 150,
+        "unit": "grams"
+      },
+      {
+        "name": "Granulated sugar",
+        "quantity": 100,
+        "unit": "grams"
+      },
+      {
+        "name": "Egg",
+        "quantity": 1,
+        "unit": "piece"
+      },
+      {
+        "name": "Vanilla extract",
+        "quantity": 1,
+        "unit": "teaspoon"
+      },
+      {
+        "name": "Baking soda",
+        "quantity": 1,
+        "unit": "teaspoon"
+      },
+      {
+        "name": "Salt",
+        "quantity": 1,
+        "unit": "teaspoon"
+      },
+      {
+        "name": "Chocolate chips",
+        "quantity": 200,
+        "unit": "grams"
+      }
+    ],
+    "instructions": "1. Preheat the oven to 180°C (350°F). <br>2. In a mixing bowl, cream together unsalted butter, brown sugar, and granulated sugar. <br>3. Add an egg and vanilla extract to the mixture and mix well. <br>4. In a separate bowl, combine all-purpose flour, baking soda, and salt. <br>5. Gradually add the dry ingredients to the wet ingredients and mix until well combined. <br>6. Stir in chocolate chips. <br>7. Drop spoonfuls of dough onto a baking sheet. <br>8. Bake for 10-12 minutes or until golden brown. <br>9. Allow the cookies to cool on a wire rack before serving."
+  },
+  {
+    "recipeName": "Caprese Salad",
+    "category": ["Italian", "Side-Dishes" ,"Healthy"],
+    "picture": "https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2019/07/Caprese-Salad-main-1.jpg",
+    "author": "Geula",
+    "difficulty": "Easy-Breezy",
+    "time": 10,
+    "ingredients": [
+      {
+        "name": "Tomatoes",
+        "quantity": 3,
+        "unit": "pieces"
+      },
+      {
+        "name": "Fresh mozzarella cheese",
+        "quantity": 200,
+        "unit": "grams"
+      },
+      {
+        "name": "Fresh basil leaves",
+        "quantity": 10,
+        "unit": "leaves"
+      },
+      {
+        "name": "Extra virgin olive oil",
+        "quantity": 2,
+        "unit": "tablespoons"
+      },
+      {
+        "name": "Balsamic vinegar",
+        "quantity": 1,
+        "unit": "tablespoon"
+      },
+      {
+        "name": "Salt",
+        "quantity": 1,
+        "unit": "teaspoon"
+      },
+      {
+        "name": "Black pepper",
+        "quantity": 1,
+        "unit": "teaspoon"
+      }
+    ],
+    "instructions": "1. Slice the tomatoes and mozzarella cheese into thick slices. <br>2. Arrange the tomato and mozzarella slices on a plate, alternating them. <br>3. Place fresh basil leaves on top of the tomato and mozzarella slices. <br>4. Drizzle with extra virgin olive oil and balsamic vinegar. <br>5. Sprinkle with salt and black pepper. <br>6. Serve immediately."
+  },
+  {
+    "recipeName": "Apple Pie",
+    "category": ["Desserts","Baking"],
+    "picture": "https://www.allrecipes.com/thmb/A7WiMNVXujJonJx1djOPne6zqMU=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/762929-sundays-apple-pie-SMClanton-4x3-1-373c2bca34b44d04a8f32f1d6ace4932.jpg",
+    "author": "Yarin",
+    "difficulty": "Intermediate",
+    "time": 90,
+    "ingredients": [
+      {
+        "name": "Apples",
+        "quantity": 6,
+        "unit": "pieces"
+      },
+      {
+        "name": "Unsalted butter",
+        "quantity": 100,
+        "unit": "grams"
+      },
+      {
+        "name": "Granulated sugar",
+        "quantity": 150,
+        "unit": "grams"
+      },
+      {
+        "name": "Brown sugar",
+        "quantity": 100,
+        "unit": "grams"
+      },
+      {
+        "name": "All-purpose flour",
+        "quantity": 3,
+        "unit": "tablespoons"
+      },
+      {
+        "name": "Ground cinnamon",
+        "quantity": 1,
+        "unit": "teaspoon"
+      },
+      {
+        "name": "Pie crust",
+        "quantity": 2,
+        "unit": "pieces"
+      },
+      {
+        "name": "Egg",
+        "quantity": 1,
+        "unit": "piece"
+      }
+    ],
+    "instructions": "1. Preheat your oven to 375°F (190°C). <br>2. Peel, core, and slice the apples. <br>3. In a pan, melt the butter and add the apples. Cook until the apples are softened. <br>4. Add the granulated sugar, brown sugar, flour, and cinnamon to the pan. Stir until the apples are coated. <br>5. Roll out one pie crust and fit it into a pie dish. <br>6. Pour the apple mixture into the pie crust. <br>7. Roll out the second pie crust and place it over the apples. Cut slits in the top crust to allow steam to escape. <br>8. Beat the egg and brush it over the top crust. <br>9. Bake for 50-60 minutes or until the crust is golden brown. <br>10. Allow the pie to cool before serving."
+  },
+  {
+    "recipeName": "Falafel",
+    "category": ["Main-Courses", "Appetizers"],
+    "picture": "https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2019/07/Falafel-7.jpg",
+    "author": "Solange",
+    "difficulty": "Master-Chef",
+    "time": 60,
+    "ingredients": [
+      {
+        "name": "Dried chickpeas",
+        "quantity": 250,
+        "unit": "grams"
+      },
+      {
+        "name": "Onion",
+        "quantity": 1,
+        "unit": "piece"
+      },
+      {
+        "name": "Garlic",
+        "quantity": 2,
+        "unit": "cloves"
+      },
+      {
+        "name": "Parsley",
+        "quantity": 30,
+        "unit": "grams"
+      },
+      {
+        "name": "Coriander",
+        "quantity": 30,
+        "unit": "grams"
+      },
+      {
+        "name": "Cumin",
+        "quantity": 1,
+        "unit": "teaspoon"
+      },
+      {
+        "name": "Salt",
+        "quantity": 1,
+        "unit": "teaspoon"
+      },
+      {
+        "name": "Baking soda",
+        "quantity": 0.5,
+        "unit": "teaspoon"
+      },
+      {
+        "name": "Vegetable oil",
+        "quantity": 500,
+        "unit": "ml"
+      }
+    ],
+    "instructions": "1. Soak chickpeas in water overnight. <br>2. Drain chickpeas and blend with chopped onion, garlic, parsley, coriander, cumin, salt, and baking soda in a food processor until a thick paste forms. <br>3. Form the mixture into small balls and let rest for 15 minutes. <br>4. Heat vegetable oil in a deep pan and fry the balls until they are golden brown. <br>5. Serve with tahini sauce and fresh vegetables."
+  },
+  {
+    "recipeName": "Pizza",
+    "category": ["Italian", "Main-Courses", "Baking"],
+    "picture": "https://www.cookingchanneltv.com/content/dam/images/cook/fullset/2011/1/6/0/CCEV103_Margherita-Pizza_s4x3.jpg",
+    "author": "Avigail",
+    "difficulty": "Easy-Breezy",
+    "time": 30,
+    "ingredients": [
+      {
+        "name": "Pizza dough",
+        "quantity": 1,
+        "unit": "piece"
+      },
+      {
+        "name": "Tomato sauce",
+        "quantity": 150,
+        "unit": "grams"
+      },
+      {
+        "name": "Fresh basil leaves",
+        "quantity": 10,
+        "unit": "leaves"
+      },
+      {
+        "name": "Mozzarella cheese",
+        "quantity": 200,
+        "unit": "grams"
+      },
+      {
+        "name": "Olive oil",
+        "quantity": 1,
+        "unit": "tablespoon"
+      },
+      {
+        "name": "Salt",
+        "quantity": 1,
+        "unit": "pinch"
+      }
+    ],
+    "instructions": "1. Preheat the oven to 220°C (425°F). <br>2. Roll out the pizza dough and place it on a baking sheet. <br>3. Spread tomato sauce over the dough. <br>4. Add fresh basil leaves. <br>5. Sprinkle mozzarella cheese on top. <br>6. Drizzle with olive oil and add a pinch of salt. <br>7. Bake for 15-20 minutes until the crust is golden and the cheese is bubbly and slightly browned. <br>8. Let the pizza cool for a few minutes before slicing and serving."
+  }
+]

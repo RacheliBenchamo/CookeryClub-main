@@ -1,0 +1,72 @@
+body {
+    background-image: url('../images/pexels-karolina-grabowska-4033159.jpg');
+    background-size: cover;
+}
+
+.card.recipe-card {
+    margin-bottom: 30px;
+    background-color: rgba(86, 39, 10, 0.6);
+    border-radius: 30px;
+    color: #fff;
+}
+
+.card-img-top {
+    object-fit: cover;
+    height: 200px;
+}
+
+.btn {
+    background-color: #64493a;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    letter-spacing: 0.1rem;
+    border-radius: 15px;
+    padding: 10px 18px;
+    border-color: #c4ac91;
+    border-width: 1px;
+}
+
+.btn:hover {
+    background-color: #c4ac91;
+    color: white;
+}
+
+.title {
+    font-size: 30px;
+    letter-spacing: 0.2rem;
+}
+
+.title1{
+    color: #64493a;
+    font-size: 30px;
+    letter-spacing: 0.2rem;
+}
+
+.category-link{
+    color: #ffffff !important;
+}
+
+.category-link:hover{
+    color: #fdd963 !important;
+}
+
+.category-link:active{
+    color: #fdd963 !important;
+}
+
+.no-recipe-link{
+    color: #64493a !important;
+    background-color: white;
+}
+
+.no-recipe-link:hover {
+    animation: rotate 0.5s ease-in-out infinite;
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0); }
+    25% { transform: rotate(6deg); }
+    75% { transform: rotate(-6deg); }
+    100% { transform: rotate(0); }
+}

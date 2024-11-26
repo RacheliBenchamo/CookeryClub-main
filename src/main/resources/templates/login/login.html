@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="">
+<head>
+  <title>Login page</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+  <link rel="stylesheet" th:href="@{/css/login.css}"/>
+  <link rel="stylesheet" th:href="@{/css/fragments.css}"/>
+</head>
+<body>
+<div th:insert="~{fragments/navbar :: navbar}"></div>
+<div class="container card mb-5 mt-5">
+  <h5>Login page</h5>
+  <p>administrator: admin / admin</p>
+  <p>user: userName / userName</p>
+  <p>users: avigail, racheli, yarin, geula, solange</p>
+
+  <div class="valid-error" th:if="${param.error}">
+    Invalid username and password.
+  </div>
+  <div class="valid-error" th:if="${param.logout}">
+    You have been logged out.
+  </div>
+  <form th:action="@{/login}" method="post">
+    <div><label> User Name : <input type="text" name="username"/> </label></div>
+    <div><label> Password: <input type="password" name="password"/> </label></div>
+    <div><button type="submit" class="btn">Sign In</button></div>
+  </form>
+  <p><a class="btn" th:href="@{/}">Back to home page</a></p>
+  <div class="valid-error" th:if="${param.logout}">
+    You have been logged out.
+  </div>
+</div>
+</body>
+</html>

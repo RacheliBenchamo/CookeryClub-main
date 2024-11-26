@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Ingredient</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+  <link rel="preload" th:href="@{/images/pexels-karolina-grabowska-4033165.jpg}" as="image">
+  <link rel="stylesheet" th:href="@{/css/add-recipe.css}"/>
+  <link rel="stylesheet" th:href="@{/css/fragments.css}"/>
+</head>
+<body>
+<div th:insert="~{fragments/navbar :: navbar}"></div>
+<div class="d-flex justify-content-center">
+  <div class="container card mb-5 mt-5">
+    <h1 class="title mb-3"><i class="fas fa-utensils"></i> Edit Ingredient</h1>
+    <div th:each="ingredient, ingredientIndex : ${ingredientsList}">
+      <form th:action="@{/user/edit/ingredient/{recipeId}(recipeId=${recipeId})}" th:object="${ingredient}" method="post">
+        <div class="card">
+          <input type="hidden" th:id="'ingredientId_' + ${ingredient.id}" th:name="id" th:value="${ingredient.id}" />
+          <input type="hidden" th:id="name" th:name="name" th:value="${ingredient.name}" />
+          <span th:text="${ingredient.name}"></span>
+          <div class="form-group">
+            <label for="quantity1">Quantity</label>
+            <input type="number" id="quantity1" name="quantity" class="form-control" th:value="${ingredient.quantity}" step="0.1"/>
+            <span th:if="${#fields.hasErrors('quantity') and currIngredientId == ingredient.id }" th:errors="*{quantity}" class="valid-error"></span>
+          </div>
+          <div class="form-group">
+            <label for="unit1">Unit</label>
+            <input type="text" id="unit1" name="unit" class="form-control" th:value="${ingredient.unit}" />
+            <span th:if="${#fields.hasErrors('unit') and currIngredientId == ingredient.id }" th:errors="*{unit}" class="valid-error"></span>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary" name="action" value="update">Update</button>
+            <button type="submit" class="btn btn-danger" name="action" value="delete">Delete</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <hr/>
+    <a th:href="@{/user/add/ingredient/{recipeId}(recipeId=${recipeId},action='edit')}" class="btn">Add Ingredient</a>
+    <a th:if="${!#lists.isEmpty(ingredientsList)}" th:href="@{/user/edit/instructions/{recipeId}(recipeId=${recipeId})}" class="btn">Save & Continue </a>
+  </div>
+</div>
+</body>
+</html>

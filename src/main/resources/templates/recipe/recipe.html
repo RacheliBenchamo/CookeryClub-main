@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Recipe</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="preload" th:href="@{/images/pexels-karolina-grabowska-4033165.jpg}" as="image">
+    <link rel="stylesheet" th:href="@{/css/recipe.css}"/>
+    <link rel="stylesheet" th:href="@{/css/fragments.css}"/>
+</head>
+<body>
+<div th:insert="~{fragments/navbar :: navbar}"></div>
+<div class="container">
+    <div class="d-flex justify-content-center">
+        <div class="col-lg-12 col-12">
+            <div class="card recipe-card mt-3">
+                <div class="card-header">
+                    <div class="row mb-1">
+                        <div class="col-lg-10 col-md-10 col-sm-12">
+                            <h1 class="title2"><i class="fas fa-utensils" th:text="${recipe.recipeName}"></i></h1>
+                            <div class="col-12">
+                                <i class="fas fa-person" th:text="'by:' + ${recipe.author}"></i>
+                            </div>
+                        </div>
+                        <div class="col-lg-1 col-md-1 col-sm-12 mx-2 my-2" th:if="${user == recipe.author}">
+                            <a th:href="@{/user/edit/recipe/{recipeId}(recipeId=${recipe.recipeId})}"><button type="button" class="btn mb-1" style="font-size: 2rem"><i class="fas fa-cog"></i></button></a>
+                            <form th:action="@{/shared/delete/recipe/{recipeId}(recipeId=${recipe.recipeId})}" method="post">
+                                <button type="submit" class="btn" style="font-size: 2rem"><i class="fas fa-trash"></i></button>
+                            </form>
+                        </div>
+                        <div class="col-lg-1 col-md-1 col-sm-12 mx-2 my-2" sec:authorize="hasRole('ADMIN')">
+                            <form th:action="@{/shared/delete/recipe/{recipeId}(recipeId=${recipe.recipeId})}" method="post">
+                                <button type="submit" class="btn" style="font-size: 2rem"><i class="fas fa-trash"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-12">
+                            <img class="card-img-top mb-2" th:src=" ${recipe.picture}"/>
+                        </div>
+                        <div class="col-lg-6 col-md-12">
+                            <a class="category-link" th:each="category : ${recipe.category}" th:href="@{/feed(category=${category})}"><i class="fas fa-tag mb-5 mx-2" th:text="' ' + ${category} + '  ' "></i></a>
+                            <div class="row mb-5 mx-2">
+                                <i class="fas fa-puzzle-piece" th:text="' ' + ${recipe.difficulty}" ></i>
+                            </div>
+                            <div class="row mb-5 mx-2">
+                                <i class="fas fa-clock" th:text="' ' + ${recipe.time}"></i>
+                            </div>
+                            <div class="row mb-5 mx-2">
+                                <i class="fas fa-star yellow-star" th:text="' ' + ${ratings}"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-12">
+                            <i class="fas fa-utensils"> Ingredients</i>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <ul class="ingredient-card">
+                                <li th:each="ingredient : ${recipe.ingredients}" th:text="' ' + ${ingredient.name} + ' - ' + ${ingredient.quantity} + ' ' + ${ingredient.unit} + '.'"></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-12">
+                            <i class="fas fa-clipboard-list"> Instructions</i>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <p th:utext="${recipe.instructions}"></p>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <form action="#" sec:authorize="hasRole('ADMIN')" th:action="@{/admin/rate/reset/{recipeId}(recipeId=${recipe.recipeId})}" method="post">
+                            <div class="row">
+                                <div class="col-4">
+                                    <button type="submit" class="btn btn-primary">Reset Rates</button>
+                                </div>
+                            </div>
+                        </form>
+                        <form action="#" sec:authorize="!hasRole('ADMIN')" th:if="${user != recipe.author}" th:action="@{/user/rate/{recipeId}(recipeId=${recipe.recipeId})}" method="post">
+                            <div class="row">
+                                <div class="col-lg-11 col-md-9 col-sm-12">
+                                    <div class="rate mb-3">
+                                        <input type="radio" id="star5" name="currRate" value="5" th:checked="${currRate == 5}" />
+                                        <label for="star5" title="text">5 stars</label>
+                                        <input type="radio" id="star4" name="currRate" value="4" th:checked="${currRate == 4}" />
+                                        <label for="star4" title="text">4 stars</label>
+                                        <input type="radio" id="star3" name="currRate" value="3" th:checked="${currRate  == 3}" />
+                                        <label for="star3" title="text">3 stars</label>
+                                        <input type="radio" id="star2" name="currRate" value="2" th:checked="${currRate == 2}"  />
+                                        <label for="star2" title="text">2 stars</label>
+                                        <input type="radio" id="star1" name="currRate" value="1" th:checked="${currRate == 1}" />
+                                        <label for="star1" title="text">1 star</label>
+                                        <input type="radio" id="star0" name="currRate" value="0" hidden="hidden" th:checked="${currRate == 0}"/>
+                                    </div>
+                                </div>
+                                <div class="col-lg-1 col-md-3 col-sm-12">
+                                    <input type="submit" class="btn" value="Rate">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card comment-card">
+                        <div class="card-body">
+                            <div class="row mt-3">
+                                <div class="col-12">
+                                    <h1 class="title1 mb-1 mx-2"><i class="fa fa-comment"></i> Comments</h1>
+                                </div>
+                            </div>
+                            <form action="#" sec:authorize="hasRole('ADMIN')" th:if="${recipe.comments.size() > 0}" th:action="@{/admin/comment/reset/{recipeId}(recipeId=${recipe.recipeId})}" method="post">
+                                <div class="row">
+                                    <div class="col-lg-10 col-md-9 col-sm-12">
+                                        <button type="submit" class="btn btn-primary">Delete All Comments</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <form action="#" sec:authorize="!hasRole('ADMIN')" th:action="@{/user/comment/{recipeId}(recipeId=${recipe.recipeId})}" method="post">
+                                <div class="row">
+                                    <div class="col-lg-10 col-md-8 col-sm-12">
+                                        <textarea class="form-control" rows="3" name="comment" placeholder="Write a comment..." required></textarea>
+                                        <div th:if="${error}" class="alert alert-danger"> Comment Can't be Empty</div>
+                                    </div>
+                                    <div class="col-lg-2 col-md-2 col-sm-12 mt-2">
+                                        <input type="submit" class="btn" value="Comment">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class="col-12">
+                                    <ul class="list-comment">
+                                        <li th:each="comment : ${recipe.comments}">
+                                            <div class="row">
+                                                <div class="col-lg-10 col-md-9 col-sm-12">
+                                                    <i class="fas fa-user" style="font-size: 1rem" th:text="' ' + ${comment.userName}"></i>
+                                                    <p th:text="${comment.comment}"></p>
+                                                </div>
+                                                <div class="col-lg-2 col-md-2 col-sm-12 mt-2" sec:authorize="hasRole('ADMIN')">
+                                                    <form action="#" th:action="@{/shared/comment/delete/{commentId}(commentId=${comment.id})}" method="post">
+                                                        <input type="submit" class="btn" value="Delete">
+                                                    </form>
+                                                </div>
+                                                <div class="col-lg-2 col-md-2 col-sm-12 mt-2"  th:if="${comment.userName == user}">
+                                                    <form action="#" th:action="@{/shared/comment/delete/{commentId}(commentId=${comment.id})}" method="post">
+                                                        <input type="submit" class="btn" value="Delete">
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>
+

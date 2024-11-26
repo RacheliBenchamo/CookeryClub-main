@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Instructions</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+  <link rel="preload" th:href="@{/images/pexels-karolina-grabowska-4033165.jpg}" as="image">
+  <link rel="stylesheet" th:href="@{/css/add-recipe.css}"/>
+  <link rel="stylesheet" th:href="@{/css/fragments.css}"/>
+</head>
+<body>
+<div th:insert="~{fragments/navbar :: navbar}"></div>
+<form action="#" th:action="@{/user/add/instructions/{recipeId}(recipeId=${recipeId})}" method="post">
+  <div class="d-flex justify-content-center">
+    <div class="container card mb-5 mt-5">
+      <div class="form-group">
+        <label for="instructions"><i class="fas fa-clipboard-list"></i> Instructions</label>
+        <textarea id="instructions" name="instructions" class="form-control" rows="10"></textarea>
+        <span th:if="${error}" th:text="${error}" class="valid-error"></span>
+      </div>
+      <button type="submit" class="btn">Add Instructions</button>
+    </div>
+  </div>
+</form>
+</body>
+</html>

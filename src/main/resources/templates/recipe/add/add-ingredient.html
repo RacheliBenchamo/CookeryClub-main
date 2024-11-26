@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Ingredient</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+  <link rel="preload" th:href="@{/images/pexels-karolina-grabowska-4033165.jpg}" as="image">
+  <link rel="stylesheet" th:href="@{/css/add-recipe.css}"/>
+  <link rel="stylesheet" th:href="@{/css/fragments.css}"/>
+</head>
+<body>
+<div th:insert="~{fragments/navbar :: navbar}"></div>
+<div class="d-flex justify-content-center">
+  <div class="container card mb-5 mt-5">
+    <div th:each="ingred : ${ingredientsList}">
+      <div class="card">
+        <i class="fas fa-utensils" th:text="' ' + ${ingred.name} + ' - ' + ${ingred.quantity} + ' ' + ${ingred.unit} + '.'"></i>
+      </div>
+    </div>
+    <form action="#" th:action="@{/user/add/ingredient/{recipeId}(recipeId=${recipeId},action=${action})}" th:object="${ingredient}" method="post">
+      <div class="d-flex justify-content-center">
+        <div class="container">
+          <div class="row">
+            <div class="form-group col-md-6">
+              <label for="name" class="col-form-label"><i class="fas fa-tag"></i> Ingredient Name</label>
+              <input type="text" th:field="*{name}" class="form-control" id="name" placeholder="Name">
+              <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="valid-error"></span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-6">
+              <label for="quantity" class="col-form-label"><i class="fas fa-sort-numeric-up"></i> Ingredient Quantity</label>
+              <input type="number" th:field="*{quantity}" class="form-control" id="quantity" placeholder="Quantity" step="0.1">
+              <span th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}" class="valid-error"></span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-6">
+              <label for="unit" class="col-form-label"><i class="fas fa-ruler"></i> Ingredient Unit</label>
+              <input type="text" th:field="*{unit}" class="form-control" id="unit" placeholder="Unit">
+              <span th:if="${#fields.hasErrors('unit')}" th:errors="*{unit}" class="valid-error"></span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-5 mt-3 mb-3">
+              <input type="submit" class="btn" value="Add ingredient">
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+    <!-- if action is 'add' -->
+    <a th:if="${action=='add' and !#lists.isEmpty(ingredientsList)}" th:href="@{/user/add/instructions/{recipeId}(recipeId=${recipeId})}" class="btn">Add instructions</a>
+
+    <!-- if action is 'edit' -->
+    <a th:if="${action=='edit' and !#lists.isEmpty(ingredientsList)}" th:href="@{/user/edit/ingredient/{recipeId}(recipeId=${recipeId})}" class="btn">Save</a>
+  </div>
+</div>
+</body>
+</html>

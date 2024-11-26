@@ -1,0 +1,121 @@
+body {
+    background-image: url('../images/pexels-karolina-grabowska-4033165.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.card {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(86, 39, 10, 0.5);
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+}
+
+.title{
+    font-size: 30px;
+    letter-spacing: 0.2rem;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+}
+
+.form-select {
+    margin-left: 1rem;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 15px;
+    background-color: #54392d;
+    color: #fff;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.form-group select:focus {
+    outline: none;
+    box-shadow: 0 0 5px #a4897d;
+}
+
+
+.btn {
+    background-color: #64493a;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    letter-spacing: 0.1rem;
+    border-radius: 15px;
+    padding: 10px 18px;
+    border-color: #c4ac91;
+    border-width: 1px;
+}
+
+.btn:hover {
+    background-color: #c4ac91;
+    color: white;
+}
+
+.valid-error {
+    color: #ff0000;
+    background: rgba(243, 227, 207, 0.5);
+    border-radius: 5px;
+    padding-bottom: 3px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+input[type="checkbox"] {
+    margin-left: 0.2rem;
+    width: 20px;
+    height: 20px;
+    background-color: #64493a;
+    color: #fff;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    position: relative;
+}
+
+input[type="checkbox"]:before {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 3px;
+    top: 2px;
+    left: 2px;
+    background-color: #64493a;
+}
+
+input[type="checkbox"]:checked:before {
+    content: "\2713";
+    color: #fff;
+    text-align: center;
+    line-height: 16px;
+    font-size: 14px;
+}
+
+@media (max-width: 600px) {
+    .card {
+        padding: 10px;
+        margin-left: 10px;
+        margin-right: 10px;
+        width: 80%;
+    }
+}

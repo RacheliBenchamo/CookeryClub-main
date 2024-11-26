@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Recipe</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="preload" th:href="@{/images/pexels-karolina-grabowska-4033165.jpg}" as="image">
+    <link rel="stylesheet" th:href="@{/css/add-recipe.css}"/>
+    <link rel="stylesheet" th:href="@{/css/fragments.css}"/>
+</head>
+<body>
+<div th:insert="~{fragments/navbar :: navbar}"></div>
+<form action="#" th:action="@{/user/edit/recipe/{recipeId}(recipeId=${recipeId})}" th:object="${recipe}" method="post">
+    <div class="d-flex justify-content-center">
+        <div class="container card mb-5 mt-5">
+            <h1 class="title mb-3"><i class="fas fa-utensils"></i> Edit Recipe</h1>
+            <div class="form-group">
+                <label for="recipeName"><i class="fas fa-tag"></i> Recipe Name</label>
+                <input type="text" th:field="*{recipeName}" class="form-control" id="recipeName" placeholder="Name" value="${recipe.recipeName}">
+                <span th:if="${#fields.hasErrors('recipeName')}" th:errors="*{recipeName}" class="valid-error"></span>
+            </div>
+            <div class="form-group">
+                <label for="category"><i class="fas fa-list"></i> Category</label>
+                <div class="checkbox-group" id="category" style="font-size: 14px">
+                    <div><input type="checkbox" th:field="*{category}" th:value="Appetizers" th:checked="${recipe.category.contains('Appetizers')}"/> Appetizers<br/></div>
+                    <div><input type="checkbox" th:field="*{category}" th:value="Main-Courses" th:checked="${recipe.category.contains('Main-Courses')}"/> Main-Courses<br/></div>
+                    <div><input type="checkbox" th:field="*{category}" th:value="Side-Dishes" th:checked="${recipe.category.contains('Side-Dishes')}"/> Side-Dishes<br/></div>
+                    <div><input type="checkbox" th:field="*{category}" th:value="Desserts" th:checked="${recipe.category.contains('Desserts')}"/> Desserts<br/></div>
+                    <div><input type="checkbox" th:field="*{category}" th:value="Breakfast" th:checked="${recipe.category.contains('Breakfast')}"/> Breakfast<br/></div>
+                    <div><input type="checkbox" th:field="*{category}" th:value="Soups" th:checked="${recipe.category.contains('Soups')}"/> Soups/Stews<br/></div>
+                    <div><input type="checkbox" th:field="*{category}" th:value="Baking" th:checked="${recipe.category.contains('Baking')}"/> Baking/Pastry<br/></div>
+                    <div><input type="checkbox" th:field="*{category}" th:value="Drinks" th:checked="${recipe.category.contains('Drinks')}"/> Drinks/Beverages<br/></div>
+                    <div><input type="checkbox" th:field="*{category}" th:value="Healthy" th:checked="${recipe.category.contains('Healthy')}"/> Healthy/Wellness<br/></div>
+                    <div><input type="checkbox" th:field="*{category}" th:value="Barbecue" th:checked="${recipe.category.contains('Barbecue')}"/> Grilling/Barbecue<br/></div>
+                    <div><input type="checkbox" th:field="*{category}" th:value="Italian" th:checked="${recipe.category.contains('Italian')}"/> Italian Cuisine<br/></div>
+                    <div><input type="checkbox" th:field="*{category}" th:value="Chinese" th:checked="${recipe.category.contains('Chinese')}"/> Chinese Cuisine<br/></div>
+                    <span th:if="${#fields.hasErrors('category')}" th:errors="*{category}" class="valid-error" style="font-size: 16px"></span>
+                </div>
+                <div class="row mt-1">
+                    <div class="form-group col-6">
+                        <label for="picture" class="col-form-label"><i class="fas fa-link"></i> Url</label>
+                        <input type="url" th:field="*{picture}" class="form-control" id="picture" placeholder="url-picture" value="${recipe.picture}">
+                        <span th:if="${#fields.hasErrors('picture')}" th:errors="*{picture}" class="valid-error"></span>
+                    </div>
+                    <div class="form-group col-6 mx-auto">
+                        <label for="time" class="col-form-label"><i class="fas fa-clock"></i> Time(in minutes)</label>
+                        <input type="number" th:field="*{time}" class="form-control" id="time" placeholder="time"  value="${recipe.time}">
+                        <span th:if="${#fields.hasErrors('time')}" th:errors="*{time}" class="valid-error"></span>
+                    </div>
+                </div>
+                <input type="text" id="author" name="author" value="${recipe.author}" hidden="hidden"/>
+                <span th:if="${#fields.hasErrors('author')}" th:errors="*{author}" class="valid-error"></span>
+                <div class="row justify-content-center">
+                    <div class="col-6">
+                        <label for="difficulty" class="col-form-label"><i class="fas fa-puzzle-piece"></i> Difficulty</label>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <span th:if="${#fields.hasErrors('difficulty')}" th:errors="*{difficulty}" class="valid-error"></span>
+                    <select class="form-select col-6" aria-label="difficulty" id="difficulty" th:field="*{difficulty}" value="${recipe.difficulty}">
+                        <option th:value=Easy-Breezy>Easy-Breezy</option>
+                        <option th:value=Intermediate>Intermediate</option>
+                        <option th:value=Master-Chef>Master Chef</option>
+                    </select>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="form-group mt-4 mb-3">
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Save & Continue</button>
+                        <a th:href="@{/user/my-recipes}" class="btn btn-secondary"><i class="fas fa-times"></i> Cancel</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+</body>
+</html>

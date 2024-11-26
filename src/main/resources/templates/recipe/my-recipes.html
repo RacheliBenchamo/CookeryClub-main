@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Recipes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+  <link rel="preload" th:href="@{/images/pexels-karolina-grabowska-4033165.jpg}" as="image">
+  <link rel="stylesheet" th:href="@{/css/my-recipes.css}"/>
+  <link rel="stylesheet" th:href="@{/css/fragments.css}"/>
+</head>
+<body>
+<div th:insert="~{fragments/navbar :: navbar}"></div>
+<div class="container">
+  <div class="row mt-3 mb-2">
+    <h1 class="title1 text-center">My Recipes</h1>
+  </div>
+  <div th:if="${userRecipes == 0}" class="row">
+    <div class="col-12">
+      <h1 class="title1 text-center">You don't have any recipes yet! <i class="fa fa-sad"></i></h1>
+    </div>
+    <div class="offset-4 col-4 mt-2">
+      <a class="nav-link text-center btn no-recipe-link" th:href="@{/user/add/recipe}">
+        <i class="fa fa-plus"></i>
+        <span class="badge badge-info"></span>
+        Add Recipe
+      </a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-4" th:each="recipe : ${recipesList}">
+      <div class="card recipe-card mt-3">
+        <div class="card-header">
+          <div class="row">
+            <div class="col-9">
+              <h1 class="title"><i class="fas fa-utensils"></i> [[${recipe.recipeName}]]</h1>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <i class="fas fa-person"> by: [[${recipe.author}]]</i>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <a class="category-link" th:each="category : ${recipe.category}" th:href="@{/feed(category=${category})}"><i class="fas fa-tag mx-2 my-2" th:text="' ' + ${category} + '  ' "></i></a>
+          <img class="card-img-top mb-2" th:src="${recipe.picture}" style="object-fit: fill"/>
+          <div class="row">
+            <div class="col-6">
+              <i class="fas fa-puzzle-piece"></i> [[${recipe.difficulty}]]
+            </div>
+            <div class="col-6">
+              <i class="fas fa-clock"></i> [[${recipe.time}]]
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-lg-6 col-sm-12">
+              <a class="btn" th:href="@{/recipe/{recipeId}(recipeId=${recipe.recipeId})}">
+                View Recipe
+              </a>
+            </div>
+            <div class="col-lg-6 col-sm-12">
+              <a class="btn" th:href="@{/user/edit/recipe/{recipeId}(recipeId=${recipe.recipeId})}">
+                Edit Recipe
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-F3DoZ5wFqWjJU25VQF3kpJ3C5NNT2+ZRoiPekUZ6Ck5BdPtF+So8xM6B5z6W5TwD" crossorigin="anonymous"></script>
+</body>
+</html>

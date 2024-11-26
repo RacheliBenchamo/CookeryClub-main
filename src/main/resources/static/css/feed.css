@@ -1,0 +1,141 @@
+body {
+    background-image: url('../images/pexels-karolina-grabowska-4033159.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+.btn-pressed {
+    background-color: #c4ac91 !important;
+    color: #fff !important;
+}
+
+input[type="text"] {
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    padding: 10px;
+    font-size: 0.8em;
+    height: 70%;
+}
+
+select.form-control {
+    height: 70%;
+    border-radius: 15px;
+    padding: 10px;
+    font-size: 0.8em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.card.recipe-card {
+    margin-bottom: 30px;
+    background-color: rgba(86, 39, 10, 0.6);
+    border-radius: 30px;
+    color: #fff;
+}
+
+.card.ingredient-card {
+    margin: 10px 0;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 15px;
+}
+
+.card-img-top {
+    object-fit: cover;
+    height: 200px;
+}
+
+.btn {
+    font-size: 0.8em !important;
+    margin: 2px !important;
+    background-color: #64493a;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    letter-spacing: 0.1rem;
+    border-radius: 15px;
+    border-color: #c4ac91;
+    border-width: 1px;
+}
+
+.btn:hover {
+    background-color: #c4ac91;
+    color: white;
+}
+
+.title{
+    font-size: 30px;
+    letter-spacing: 0.2rem;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.rate {
+    float: left;
+    height: 46px;
+    padding: 0 10px;
+}
+
+.rate:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+    color:#ccc;
+}
+
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+
+.rate > input:checked ~ label {
+    color: #ffc700;
+}
+
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #deb217;
+}
+
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}
+
+.category-link{
+    color: #ffffff !important;
+}
+
+.category-link:hover{
+    color: #fdd963 !important;
+}
+
+.category-link:active{
+    color: #fdd963 !important;
+}
+
+.title1{
+    color: #64493a;
+    font-size: 30px;
+    letter-spacing: 0.2rem;
+    padding: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 25px !important;
+}

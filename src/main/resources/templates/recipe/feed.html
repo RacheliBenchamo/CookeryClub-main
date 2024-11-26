@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="">
+<head>
+    <meta charset="UTF-8">
+    <title>Recipes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/feed.css}"/>
+    <link rel="stylesheet" th:href="@{/css/fragments.css}"/>
+</head>
+<body>
+<div th:insert="~{fragments/navbar :: navbar}"></div>
+<div class="row mt-3 mx-3">
+    <div class="col-lg-6 offset-lg-3">
+        <form action="/feed" method="get" class="search-form">
+            <div class="input-group mb-1">
+                <select class="form-control custom-select" name="searchType">
+                    <option value="author">Search by Author</option>
+                    <option value="recipeName" selected>Search by Recipe Name</option>
+                </select>
+                <input type="text" class="form-control" name="keyword" placeholder="Enter keyword">
+                <div class="input-group-append">
+                    <button class="btn" type="submit">Search</button>
+                </div>
+            </div>
+            <div class="input-group mb-1">
+                <select class="form-control custom-select" name="difficulty">
+                    <option value="" selected>Choose Difficulty</option>
+                    <option value="Easy-Breezy">Easy Breezy</option>
+                    <option value="Intermediate">Intermediate</option>
+                    <option value="Master-Chef">Master Chef</option>
+                </select>
+                <div class="input-group-append">
+                    <button class="btn" type="submit">Difficulty</button>
+                </div>
+            </div>
+            <div class="input-group mb-1">
+                <input type="text" class="form-control" name="maxCookingTime" placeholder="Max Cooking Time">
+                <div class="input-group-append">
+                    <button class="btn" type="submit"> Max Cooking Time </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="row mx-4 mt-2">
+        <div class="col-lg-12">
+            <form action="/feed" method="get" class="search-form">
+                <div class="input-group">
+                    <button class="btn category-btn" th:classappend="${selectedCategory == 'All' ? 'btn-pressed' : ''}" type="submit" name="category" value="All" th:text="'All (' + ${categoryCounts['All']} + ')'"></button>
+                    <button class="btn category-btn" th:classappend="${selectedCategory == 'Appetizers' ? 'btn-pressed' : ''}" type="submit" name="category" value="Appetizers" th:text="'Appetizers (' + ${categoryCounts['Appetizers']} + ')'"></button>
+                    <button class="btn category-btn" th:classappend="${selectedCategory == 'Main-Courses' ? 'btn-pressed' : ''}" type="submit" name="category" value="Main-Courses" th:text="'Main-Courses (' + ${categoryCounts['Main-Courses']} + ')'"></button>
+                    <button class="btn category-btn" th:classappend="${selectedCategory == 'Side-Dishes' ? 'btn-pressed' : ''}" type="submit" name="category" value="Side-Dishes" th:text="'Side-Dishes (' + ${categoryCounts['Side-Dishes']} + ')'"></button>
+                    <button class="btn category-btn" th:classappend="${selectedCategory == 'Desserts' ? 'btn-pressed' : ''}" type="submit" name="category" value="Desserts" th:text="'Desserts (' + ${categoryCounts['Desserts']} + ')'"></button>
+                    <button class="btn category-btn" th:classappend="${selectedCategory == 'Breakfast' ? 'btn-pressed' : ''}" type="submit" name="category" value="Breakfast" th:text="'Breakfast (' + ${categoryCounts['Breakfast']} + ')'"></button>
+                    <button class="btn category-btn" th:classappend="${selectedCategory == 'Soups' ? 'btn-pressed' : ''}" type="submit" name="category" value="Soups" th:text="'Soups (' + ${categoryCounts['Soups']} + ')'"></button>
+                    <button class="btn category-btn" th:classappend="${selectedCategory == 'Baking' ? 'btn-pressed' : ''}" type="submit" name="category" value="Baking" th:text="'Baking (' + ${categoryCounts['Baking']} + ')'"></button>
+                    <button class="btn category-btn" th:classappend="${selectedCategory == 'Drinks' ? 'btn-pressed' : ''}" type="submit" name="category" value="Drinks" th:text="'Drinks (' + ${categoryCounts['Drinks']} + ')'"></button>
+                    <button class="btn category-btn" th:classappend="${selectedCategory == 'Healthy' ? 'btn-pressed' : ''}" type="submit" name="category" value="Healthy" th:text="'Healthy (' + ${categoryCounts['Healthy']} + ')'"></button>
+                    <button class="btn category-btn" th:classappend="${selectedCategory == 'Grilling' ? 'btn-pressed' : ''}" type="submit" name="category" value="Grilling" th:text="'Grilling (' + ${categoryCounts['Grilling']} + ')'"></button>
+                    <button class="btn category-btn" th:classappend="${selectedCategory == 'Italian' ? 'btn-pressed' : ''}" type="submit" name="category" value="Italian" th:text="'Italian (' + ${categoryCounts['Italian']} + ')'"></button>
+                    <button class="btn category-btn" th:classappend="${selectedCategory == 'Chinese' ? 'btn-pressed' : ''}" type="submit" name="category" value="Chinese" th:text="'Chinese (' + ${categoryCounts['Chinese']} + ')'"></button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="container">
+        <div th:if="${recipesList.isEmpty()}" class="row">
+            <div class="text-center col-sm-8 offset-sm-2 col-lg-4 offset-lg-4 col-md-6 offset-md-3">
+                <h1 class="mt-1 title1">No recipes found!</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-lg-4" th:each="recipe : ${recipesList}">
+                <div class="card recipe-card mt-3">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-9">
+                                <h1 class="title"><i class="fas fa-utensils" th:text="' ' + ${recipe.recipeName}"></i></h1>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <i class="fas fa-person" th:text="'by:' + ${recipe.author}"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <a class="category-link" th:each="category : ${recipe.category}" th:href="@{/feed(category=${category})}"><i class="fas fa-tag mx-2 my-2" th:text="' ' + ${category} + '  ' "></i></a>
+                        <img class="card-img-top mb-2" th:src="${recipe.picture}" style="object-fit: fill" alt=""/>
+                        <div class="row">
+                            <div class="col-6">
+                                <i class="fas fa-puzzle-piece" th:text="' ' + ${recipe.difficulty}" ></i>
+                            </div>
+                            <div class="col-6">
+                                <i class="fas fa-clock" th:text="' ' + ${recipe.time}"></i>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-12">
+                                <a class="btn"  th:href="@{/recipe/{recipeId}(recipeId=${recipe.recipeId})}">
+                                    View Recipe
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
